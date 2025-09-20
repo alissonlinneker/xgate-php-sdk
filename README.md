@@ -440,7 +440,6 @@ Encontrou algum bug? Abra uma [issue](https://github.com/alissonlinneker/xgate-p
 
 **Alisson Linneker**
 - GitHub: [@alissonlinneker](https://github.com/alissonlinneker)
-- Email: alissonlinneker@gmail.com
 
 ## Licença
 
