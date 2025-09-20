@@ -1,0 +1,71 @@
+# Composer
+/vendor/
+composer.lock
+
+# PHPUnit
+.phpunit.cache/
+.phpunit.result.cache
+/coverage/
+phpunit.xml.bak
+
+# PHP CS Fixer
+.php-cs-fixer.cache
+
+# PHPStan
+phpstan.cache
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+/logs/
+
+# Cache
+/cache/
+/tmp/
+/temp/
+
+# Build
+/build/
+/dist/
+
+# Documentation
+/docs/_build/
+/docs/.doctrees/
+
+# Testing
+/tests/coverage/
+/tests/report/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Package files
+*.tar
+*.tar.gz
+*.zip
+*.7z
+*.rar

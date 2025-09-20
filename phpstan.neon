@@ -1,0 +1,13 @@
+parameters:
+    level: 8
+    paths:
+        - src
+        - tests
+    treatPhpDocTypesAsCertain: false
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - '#Property .+ has no type specified#'
+        - '#Method .+ has no return type specified#'
+        - '#Parameter \$[a-zA-Z0-9]+ of method .+ has no type specified#'

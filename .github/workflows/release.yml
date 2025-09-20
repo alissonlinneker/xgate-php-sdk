@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, curl, json, bcmath, intl
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-dev --optimize-autoloader
+
+      - name: Run tests
+        run: |
+          composer install
+          vendor/bin/phpunit
+
+      - name: Create release archive
+        run: |
+          mkdir -p release
+          tar -czf release/xgate-php-sdk-${{ github.ref_name }}.tar.gz \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=tests \
+            --exclude=examples \
+            --exclude=.gitignore \
+            --exclude=.php-cs-fixer.php \
+            --exclude=phpunit.xml \
+            --exclude=phpstan.neon \
+            --exclude=Makefile \
+            --exclude=release \
+            .
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/*.tar.gz
+          generate_release_notes: true
+          body: |
+            ## XGate Global PHP SDK ${{ github.ref_name }}
+
+            ### Installation
+            ```bash
+            composer require xgate-global/php-sdk
+            ```
+
+            ### Requirements
+            - PHP 8.4 or higher
+            - ext-curl
+            - ext-json
+            - ext-mbstring
+            - ext-bcmath
+
+            See [README.md](https://github.com/xgate-global/php-sdk#readme) for usage instructions.
